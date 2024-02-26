@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Serves stream of video files.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js",
     "dev": "env-cmd nodemon index.js"
