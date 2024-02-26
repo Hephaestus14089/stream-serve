@@ -4,6 +4,12 @@ const settings = {
   file_path: null
 };
 
+const isChanged = {
+  chunk_size: false,
+  port: false,
+  file_path: false
+};
+
 const displayHelp = () => {
   console.log(`
     Usage: \n\tstream-serve [options] [file-path]
@@ -27,13 +33,6 @@ const badCommand = () => {
 
 const argsParse = (args) => {
   // console.log(args);  // debug output
-
-  isOptionSet = {
-    'chunk_size': false,
-    'port': false,
-    'file_path': false
-  };
-
   for (let i = 2; i < args.length; i++) {
     if (args[i].charAt(0) === '-') {  // is an option
       if (['--help', '-h'].includes(args[i])) {
@@ -41,35 +40,17 @@ const argsParse = (args) => {
         process.exit(0);
       }
       else if (['--chunk-size', '-c'].includes(args[i])) {
-        if (isOptionSet['chunk-size']) {
-          badCommand();
-          displayHelp();
-          process.exit(1);
-        }
-        
-        isOptionSet['chunk_size'] = true;
-        
-        if (args[i + 1] === undefined) {
-          displayErrMsg("You must provide a chunk size if you use the option.");
-          process.exit(1);
-        }
-        
-        if (isNaN(args[i + 1]) || Number(args[i + 1]) <= 0) {
-          displayErrMsg("Bad value.");
-          process.exit(1);
-        }
-
-        settings.chunk_size = Number(args[i + 1]);
+        settings.chunk_size = args[i + 1];
+        isChanged.chunk_size = true;
       }
       else if (['--port', '-p'].includes(args[i])) {
-        // check if already set 
-        // 
-        // validate value
-        // set port
+        settings.port = args[i + 1];
+        isChanged.port = true;
       }
       else {
-        // bad command error
-        // display help command
+        badCommand();
+        displayHelp();
+        process.exit(1);
       }
     }
     else if (args[i - 1].charAt(0) !== '-') {  // is a file path
@@ -83,14 +64,14 @@ const argsParse = (args) => {
   }
 };
 
-/**
- * Flow of the app algorithm :-
- * get user input (command)
- * verify user input
- * do/run stuff accordingly
- */
-
 function main() {
+  /**
+    * Parse arguments
+    * check what's changed
+    * validate user input
+    * call functions
+    */
+
   // console.log(process.argv);  // debug output
   // console.log(settings);  // debug output
 
