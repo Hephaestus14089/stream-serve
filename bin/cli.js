@@ -54,12 +54,8 @@ const argsParse = (args) => {
       }
     }
     else if (args[i - 1].charAt(0) !== '-') {  // is a file path
-      // if (isOptionSet('file-path'))
-      //  bad file path error
-      //
-      // isOptionSet['file-path'] = true;
-      // validate file path 
-      // set file path 
+      settings.file_path = args[i];
+      isChanged.file_path = true;
     }
   }
 };
