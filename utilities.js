@@ -12,12 +12,12 @@ const helpMsg = () => `
 const errMsg = (msg) => `err: ${msg}`;
 
 const error = (msg) => {
-  console.log(errMsg(msg));
+  console.error(errMsg(msg));
   process.exit(1);
 } 
 
 const badCommand = () => {
-  console.log(errMsg("Unable to understand. Please recheck command syntax."));
+  console.error(errMsg("Unable to understand. Please recheck command syntax."));
   console.log(helpMsg());
   process.exit(1);
 };
