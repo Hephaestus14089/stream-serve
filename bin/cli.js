@@ -1,4 +1,5 @@
-const { helpMsg, error, badCommand } = require('../utilities.js');
+const { helpMsg, badCommand } = require('../utilities.js');
+const { validateSettings } = require('../validations.js');
 
 const settings = {
   chunk_size: 204800, // default chunk size: 200kb
@@ -13,7 +14,6 @@ const isChanged = {
 };
 
 const argsParse = (args) => {
-  // console.log(args);  // debug output
   for (let i = 2; i < args.length; i++) {
     if (args[i].charAt(0) === '-') {  // is an option
       if (['--help', '-h'].includes(args[i])) {
@@ -47,12 +47,9 @@ function main() {
     * call functions
     */
 
-  // console.log(process.argv);  // debug output
-  // console.log(settings);  // debug output
-
   argsParse(process.argv);
 
-  console.log(settings);  // debug output
+  validateSettings(settings, isChanged);
 } // end of main
 
 main();
