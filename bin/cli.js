@@ -1,4 +1,4 @@
-import { helpMsg, error, badCommand } from '../utilities.js';
+const { helpMsg, error, badCommand } = require('../utilities.js');
 
 const settings = {
   chunk_size: 204800, // default chunk size: 200kb

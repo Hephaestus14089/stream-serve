@@ -22,4 +22,4 @@ const badCommand = () => {
   process.exit(1);
 };
 
-export { helpMsg, error, badCommand };
+module.exports = { helpMsg, error, badCommand };
