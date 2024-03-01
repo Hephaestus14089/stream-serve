@@ -8,13 +8,15 @@ const isPositiveNumber = (num) =>
   : true
 ;
 
-const validateChunkSize = (chunk_size) => isPositiveNumber(chunk_size);
+const validateChunkSize = (chunk_size) => {
+  if (!isPositiveNumber(chunk_size));
+    error("invalid chunk size");
+};
 
-const validatePort = (port) =>
-  (isPositiveNumber(port) && (port >= 0 && port <= 65535))
-  ? true
-  : false
-;
+const validatePort = (port) => {
+  if (!(isPositiveNumber(port) && (port >= 0 && port <= 65535)))
+    error("invalid port");
+};
 
 const validateFile = (filePathStr) => {
   const filePath = (['/', '~'].includes(filePathStr.charAt(0)))
@@ -33,10 +35,14 @@ const validateSettings = (settings, isChanged) => {
   if (!isChanged.file_path)
     error("file path is required");
 
-  if (isChanged.chunk_size && !validateChunkSize(settings.chunk_size))
-    error("invalid chunk size");
-  if (isChanged.port && !validatePort(settings.port))
-    error("invalid port");
+  if (isChanged.chunk_size) {
+    validateChunkSize(settings.chunk_size);
+    settings.chunk_size = Number(settings.chunk_size);
+  }
+  if (isChanged.port) {
+    validatePort(settings.port);
+    settings.port = Number(settings.port);
+  }
   
   validateFile(settings.file_path);
 };
