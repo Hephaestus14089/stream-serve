@@ -1,3 +1,5 @@
+#!/usr/bin/env node 
+
 const { helpMsg, badCommand } = require('../src/utilities.js');
 const { validateSettings } = require('../src/validations.js');
 const { startStream } = require('../src/stream.js');
