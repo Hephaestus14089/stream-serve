@@ -41,6 +41,12 @@ function main() {
   argsParse(process.argv);
   validateSettings(settings, isChanged);
 
+  if (!isChanged.chunk_size)
+    console.log(`Chunk size not provided. Using default value: ${settings.chunk_size}`);
+  if (!isChanged.port)
+    console.log(`Port not provided. Using default value: ${settings.port}`);
+
+  console.log("\nStarting server...");
   startStream(settings);
 } // end of main
 
