@@ -43,15 +43,7 @@ const argsParse = (args) => {
 };
 
 function main() {
-  /**
-    * Parse arguments
-    * check what's changed
-    * validate user input
-    * call functions
-    */
-
   argsParse(process.argv);
-
   validateSettings(settings, isChanged);
 
   startStream(settings);
