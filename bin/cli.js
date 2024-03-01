@@ -1,5 +1,6 @@
 const { helpMsg, badCommand } = require('../utilities.js');
 const { validateSettings } = require('../validations.js');
+const { startStream } = require('../stream.js');
 
 const settings = {
   chunk_size: 204800, // default chunk size: 200kb
@@ -50,6 +51,8 @@ function main() {
   argsParse(process.argv);
 
   validateSettings(settings, isChanged);
+
+  startStream(settings);
 } // end of main
 
 main();
