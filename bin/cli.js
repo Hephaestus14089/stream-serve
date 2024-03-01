@@ -1,6 +1,6 @@
-const { helpMsg, badCommand } = require('../utilities.js');
-const { validateSettings } = require('../validations.js');
-const { startStream } = require('../stream.js');
+const { helpMsg, badCommand } = require('../src/utilities.js');
+const { validateSettings } = require('../src/validations.js');
+const { startStream } = require('../src/stream.js');
 
 const settings = {
   chunk_size: 204800, // default chunk size: 200kb
