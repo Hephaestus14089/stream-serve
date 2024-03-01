@@ -3,7 +3,7 @@
 const { helpMsg, badCommand } = require('../src/utilities.js');
 const { validateSettings } = require('../src/validations.js');
 const { startStream } = require('../src/stream.js');
-const { settings } = require('../../defaults.js');
+const { settings } = require('../src/defaults.js');
 
 const isChanged = {
   chunk_size: false,
