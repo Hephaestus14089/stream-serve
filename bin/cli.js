@@ -4,6 +4,7 @@ const { helpMsg, badCommand } = require('../src/utilities.js');
 const { validateSettings } = require('../src/validations.js');
 const { startStream } = require('../src/stream.js');
 const { settings } = require('../src/defaults.js');
+const path = require('node:path');
 
 const isChanged = {
   chunk_size: false,
@@ -37,6 +38,15 @@ const argsParse = (args) => {
   }
 };
 
+const getExactFilePath = (filePathStr) => {
+  const filePath = (['/', '~'].includes(filePathStr.charAt(0)))
+    ? path.join(filePathStr)
+    : path.join(process.cwd(), filePathStr)
+  ;
+  const exactFilePath = filePath.replace('~/', '/home/bhargav/');
+  return exactFilePath;
+};
+
 function main() {
   argsParse(process.argv);
 
@@ -49,6 +59,7 @@ function main() {
   else
     console.log(`Port not provided. Using default value: ${settings.port}`);
 
+  settings.file_path =  getExactFilePath(settings.file_path);
   console.log(`File path: ${settings.file_path}`);
 
   validateSettings(settings, isChanged);
