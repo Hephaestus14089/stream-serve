@@ -33,7 +33,7 @@ const startStream = (settings) => {
   });
 
   app.listen(port, () => {
-    console.log(`Streaming on port ${port}`);
+    console.log(`Server started successfully.`);
   });
 };
 

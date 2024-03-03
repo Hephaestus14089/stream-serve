@@ -39,12 +39,19 @@ const argsParse = (args) => {
 
 function main() {
   argsParse(process.argv);
-  validateSettings(settings, isChanged);
 
-  if (!isChanged.chunk_size)
+  if (isChanged.chunk_size)
+    console.log(`Chunk size: ${settings.chunk_size}`);
+  else
     console.log(`Chunk size not provided. Using default value: ${settings.chunk_size}`);
-  if (!isChanged.port)
+  if (isChanged.port)
+    console.log(`Port: ${settings.port}`);
+  else
     console.log(`Port not provided. Using default value: ${settings.port}`);
+
+  console.log(`File path: ${settings.file_path}`);
+
+  validateSettings(settings, isChanged);
 
   console.log("\nStarting server...");
   startStream(settings);
