@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hephaestus14089/stream-serve.git"
+    "url": "https://github.com/hephaestus14089/stream-serve.git"
   },
   "author": "Bhargav Das Gupta <dasguptabhargav@gmail.com>",
   "license": "GPL-3.0",
