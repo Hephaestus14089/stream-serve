@@ -17,5 +17,8 @@
   "homepage": "https://github.com/hephaestus14089/stream-serve#readme",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=20.11.1"
   }
 }
