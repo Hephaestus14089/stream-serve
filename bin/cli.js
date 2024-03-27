@@ -1,9 +1,9 @@
 #!/usr/bin/env node 
 
-const { helpMsg, badCommand } = require('../src/utilities.js');
-const { validateSettings } = require('../src/validations.js');
-const { startStream } = require('../src/stream.js');
-const { settings } = require('../src/defaults.js');
+const { helpMsg, badCommand } = require('../src/backend/utilities.js');
+const { validateSettings } = require('../src/backend/validations.js');
+const { startStream } = require('../src/backend/stream.js');
+const { settings } = require('../src/backend/defaults.js');
 const path = require('node:path');
 
 const isChanged = {
