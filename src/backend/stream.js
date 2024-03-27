@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('node:fs');
+const path = require('node:path');
 
 const startStream = (settings) => {
   const { chunk_size, port, file_path } = settings;
@@ -7,6 +8,10 @@ const startStream = (settings) => {
   const file_size = fs.statSync(file_path).size;
   
   const app = express();
+
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname,  '../', 'frontend/', 'index.html'));
+  });
 
   app.get('/stream', (req, res) => {
     const range = req.headers.range;
